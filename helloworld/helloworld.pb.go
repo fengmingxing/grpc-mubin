@@ -104,25 +104,109 @@ func (m *HelloReply) GetMessage() string {
 	return ""
 }
 
+// The request message containing the user's name.
+type TimeRequest struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TimeRequest) Reset()         { *m = TimeRequest{} }
+func (m *TimeRequest) String() string { return proto.CompactTextString(m) }
+func (*TimeRequest) ProtoMessage()    {}
+func (*TimeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17b8c58d586b62f2, []int{2}
+}
+
+func (m *TimeRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TimeRequest.Unmarshal(m, b)
+}
+func (m *TimeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TimeRequest.Marshal(b, m, deterministic)
+}
+func (m *TimeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TimeRequest.Merge(m, src)
+}
+func (m *TimeRequest) XXX_Size() int {
+	return xxx_messageInfo_TimeRequest.Size(m)
+}
+func (m *TimeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_TimeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TimeRequest proto.InternalMessageInfo
+
+func (m *TimeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+// The response message containing the greetings and the server time
+type TimeReply struct {
+	Message              string   `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TimeReply) Reset()         { *m = TimeReply{} }
+func (m *TimeReply) String() string { return proto.CompactTextString(m) }
+func (*TimeReply) ProtoMessage()    {}
+func (*TimeReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_17b8c58d586b62f2, []int{3}
+}
+
+func (m *TimeReply) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TimeReply.Unmarshal(m, b)
+}
+func (m *TimeReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TimeReply.Marshal(b, m, deterministic)
+}
+func (m *TimeReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TimeReply.Merge(m, src)
+}
+func (m *TimeReply) XXX_Size() int {
+	return xxx_messageInfo_TimeReply.Size(m)
+}
+func (m *TimeReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_TimeReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TimeReply proto.InternalMessageInfo
+
+func (m *TimeReply) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*HelloRequest)(nil), "helloworld.HelloRequest")
 	proto.RegisterType((*HelloReply)(nil), "helloworld.HelloReply")
+	proto.RegisterType((*TimeRequest)(nil), "helloworld.TimeRequest")
+	proto.RegisterType((*TimeReply)(nil), "helloworld.TimeReply")
 }
 
 func init() { proto.RegisterFile("helloworld.proto", fileDescriptor_17b8c58d586b62f2) }
 
 var fileDescriptor_17b8c58d586b62f2 = []byte{
-	// 149 bytes of a gzipped FileDescriptorProto
+	// 192 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xc8, 0x48, 0xcd, 0xc9,
 	0xc9, 0x2f, 0xcf, 0x2f, 0xca, 0x49, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x42, 0x88,
 	0x28, 0x29, 0x71, 0xf1, 0x78, 0x80, 0x78, 0x41, 0xa9, 0x85, 0xa5, 0xa9, 0xc5, 0x25, 0x42, 0x42,
 	0x5c, 0x2c, 0x79, 0x89, 0xb9, 0xa9, 0x12, 0x8c, 0x0a, 0x8c, 0x1a, 0x9c, 0x41, 0x60, 0xb6, 0x92,
 	0x1a, 0x17, 0x17, 0x54, 0x4d, 0x41, 0x4e, 0xa5, 0x90, 0x04, 0x17, 0x7b, 0x6e, 0x6a, 0x71, 0x71,
-	0x62, 0x3a, 0x4c, 0x11, 0x8c, 0x6b, 0xe4, 0xc9, 0xc5, 0xee, 0x5e, 0x94, 0x9a, 0x5a, 0x92, 0x5a,
-	0x24, 0x64, 0xc7, 0xc5, 0x11, 0x9c, 0x58, 0x09, 0xd6, 0x25, 0x24, 0xa1, 0x87, 0xe4, 0x02, 0x64,
-	0xcb, 0xa4, 0xc4, 0xb0, 0xc8, 0x14, 0xe4, 0x54, 0x2a, 0x31, 0x38, 0xb1, 0x2d, 0x62, 0x62, 0xf6,
-	0xf0, 0x09, 0x4f, 0x62, 0x03, 0xbb, 0xd8, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0xbe, 0xde, 0x1d,
-	0x2e, 0xc5, 0x00, 0x00, 0x00,
+	0x62, 0x3a, 0x4c, 0x11, 0x8c, 0xab, 0xa4, 0xc8, 0xc5, 0x1d, 0x92, 0x99, 0x9b, 0x8a, 0xcf, 0x28,
+	0x55, 0x2e, 0x4e, 0x88, 0x12, 0xbc, 0x26, 0x19, 0x75, 0x30, 0x72, 0xb1, 0xbb, 0x17, 0xa5, 0xa6,
+	0x96, 0xa4, 0x16, 0x09, 0xd9, 0x71, 0x71, 0x04, 0x27, 0x56, 0x82, 0x1d, 0x20, 0x24, 0xa1, 0x87,
+	0xe4, 0x19, 0x64, 0x77, 0x4b, 0x89, 0x61, 0x91, 0x29, 0xc8, 0xa9, 0x54, 0x62, 0x10, 0xb2, 0xe5,
+	0xe2, 0x0c, 0x28, 0xca, 0xcc, 0x2b, 0x01, 0xd9, 0x2b, 0x24, 0x8e, 0xac, 0x0c, 0xc9, 0xb1, 0x52,
+	0xa2, 0x98, 0x12, 0x60, 0xed, 0x4e, 0x6c, 0x8b, 0x98, 0x98, 0x3d, 0x7c, 0xc2, 0x93, 0xd8, 0xc0,
+	0x61, 0x67, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0x1d, 0x6e, 0xb3, 0xf3, 0x4f, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,6 +223,7 @@ const _ = grpc.SupportPackageIsVersion4
 type GreeterClient interface {
 	// Sends a greeting
 	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
+	PrintTime(ctx context.Context, in *TimeRequest, opts ...grpc.CallOption) (*TimeReply, error)
 }
 
 type greeterClient struct {
@@ -158,10 +243,20 @@ func (c *greeterClient) SayHello(ctx context.Context, in *HelloRequest, opts ...
 	return out, nil
 }
 
+func (c *greeterClient) PrintTime(ctx context.Context, in *TimeRequest, opts ...grpc.CallOption) (*TimeReply, error) {
+	out := new(TimeReply)
+	err := c.cc.Invoke(ctx, "/helloworld.Greeter/PrintTime", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GreeterServer is the server API for Greeter service.
 type GreeterServer interface {
 	// Sends a greeting
 	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
+	PrintTime(context.Context, *TimeRequest) (*TimeReply, error)
 }
 
 // UnimplementedGreeterServer can be embedded to have forward compatible implementations.
@@ -170,6 +265,9 @@ type UnimplementedGreeterServer struct {
 
 func (*UnimplementedGreeterServer) SayHello(ctx context.Context, req *HelloRequest) (*HelloReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
+}
+func (*UnimplementedGreeterServer) PrintTime(ctx context.Context, req *TimeRequest) (*TimeReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PrintTime not implemented")
 }
 
 func RegisterGreeterServer(s *grpc.Server, srv GreeterServer) {
@@ -194,6 +292,24 @@ func _Greeter_SayHello_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Greeter_PrintTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TimeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GreeterServer).PrintTime(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/helloworld.Greeter/PrintTime",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GreeterServer).PrintTime(ctx, req.(*TimeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Greeter_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "helloworld.Greeter",
 	HandlerType: (*GreeterServer)(nil),
@@ -201,6 +317,10 @@ var _Greeter_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SayHello",
 			Handler:    _Greeter_SayHello_Handler,
+		},
+		{
+			MethodName: "PrintTime",
+			Handler:    _Greeter_PrintTime_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -3,7 +3,7 @@ package main
 import (
     "log"
     "net"
-
+    "time"
     pb "grpc-mubin/helloworld"
     "google.golang.org/grpc"
     "golang.org/x/net/context"
@@ -18,6 +18,11 @@ type server struct {}
 func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
     log.Println("request: ", in.Name)
     return &pb.HelloReply{Message: "Hello " + in.Name}, nil
+}
+
+func (s *server) PrintTime(ctx context.Context, in *pb.TimeRequest) (*pb.TimeReply, error) {
+    log.Println("request: ", in.Name)
+    return &pb.TimeReply{Message: "Hello " + in.Name + " --> Server Time:"+ time.Now().Format("2006-01-02 15:04:05")}, nil
 }
 
 func main() {

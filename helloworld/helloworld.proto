@@ -8,6 +8,7 @@ package helloworld;
 service Greeter {
   // Sends a greeting
   rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc PrintTime (TimeRequest) returns (TimeReply) {}
 }
 
 // The request message containing the user's name.
@@ -17,5 +18,15 @@ message HelloRequest {
 
 // The response message containing the greetings
 message HelloReply {
+  string message = 1;
+}
+
+// The request message containing the user's name.
+message TimeRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings and the server time
+message TimeReply {
   string message = 1;
 }

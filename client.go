@@ -10,11 +10,12 @@ import (
 )
 
 const (
-    address = "localhost:50001"
+    address = "foo.bar.com:443"
 )
 
 func main() {
-    conn, err := grpc.Dial(address, grpc.WithInsecure())
+    address2:= os.Args[1]
+    conn, err := grpc.Dial(address2, grpc.WithInsecure())
 
     if err != nil {
         log.Fatalf("did not connect: %v", err)
@@ -35,5 +36,11 @@ func main() {
         log.Fatalf("could not greet: %v", err)
     }
     log.Println(r.Message)
+    rtime, err := c.PrintTime(context.Background(), &pb.TimeRequest{Name: name})
+
+    if err != nil {
+        log.Fatalf("could not greet: %v", err)
+    }
+    log.Println(rtime.Message)
 }
 
